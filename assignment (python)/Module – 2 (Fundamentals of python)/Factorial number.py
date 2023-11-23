@@ -13,5 +13,5 @@ else:
     for i in range(1,num + 1):
         fact = fact * i
 
-    print("Factoial of",num,"is",fact)
+    print("Factorial of",num,"is",fact)
     
