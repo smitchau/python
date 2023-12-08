@@ -1,9 +1,13 @@
 # Write a Python program to select an item randomly from a list.
 
-import random
+import random  # Importing the random module
 
-list = ['mango','banana','orange','apple','kiwi']
+# Creating a list of fruits
+fruits_list = ['mango', 'banana', 'orange', 'apple', 'kiwi']
 
-item = random.choice(list)
+# Using random.choice() to select a random item from the list
+selected_item = random.choice(fruits_list)
 
-print(item)
+# Printing the randomly selected item
+print(selected_item)
+
