@@ -1,4 +1,4 @@
-#===========Write a Python program to read an entire text file.=================
+#Que - 2 Write a Python program to read an entire text file.
 
 # Writing student information to a file
 file = open("studentinfo.txt", 'w')

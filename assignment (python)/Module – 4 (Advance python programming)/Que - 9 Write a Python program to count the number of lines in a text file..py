@@ -1,4 +1,4 @@
-#Write a Python program to count the number of lines in a text file. 
+#Que - 9 Write a Python program to count the number of lines in a text file. 
 
 # Open the file in read mode ('r')
 file = open("studentinfo.txt", 'r')

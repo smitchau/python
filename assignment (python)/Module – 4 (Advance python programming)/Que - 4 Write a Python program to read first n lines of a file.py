@@ -1,4 +1,4 @@
-#===========Write a Python program to read first n lines of a file.=========
+#Que - 4 Write a Python program to read first n lines of a file.
 
 # Open the file in read mode ('r')
 file = open('studentinfo.txt', 'r')
