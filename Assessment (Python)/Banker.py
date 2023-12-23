@@ -1,4 +1,4 @@
-#======================================Banker Module===============================
+#===============================Banker Module===============================
 
 #========Display============
 
@@ -14,39 +14,84 @@ def display():
     print("\t\t4) View All Customer")
     print("\t\t5) Total Amounts in Bank\n")
 
-dic1 = {'101': {'name': 'smit', 'balance': 20000},'105': {'name': 'nik', 'balance': 5000}}
 #========Add_customer============
-
+accounts = {}
 def add_customer():
 
-    size = int(input("How many customer you want to enter :"))
+    # Initialize an empty dictionary to store accounts
+    
 
-    for i in range(size):
-        ac_no = input("\nEnter Acount number : ")
+    # Getting user input for account details
+    num_accounts = int(input("Enter the number of accounts: "))
+
+    for _ in range(num_accounts):
+        acc_number = input("Enter account number: ")
+        name = input("Enter name: ")
+        balance = float(input("Enter balance: "))  # Assuming balance is a floating-point number
+    
+        # Creating a dictionary for the account
+        account_info = {'name': name, 'balance': balance}
         
-        dic1[ac_no] = {}
-        customer_name = input("Enter customer name : ")
-        balance = int(input("Enter opening balance : "))
+        # Adding the account to the accounts dictionary
+        accounts[acc_number] = account_info
 
-        dic1[ac_no]['name'] = customer_name
-        dic1[ac_no]['balance'] = balance
-        print('customer is added...')
-        
+    # Printing the accounts dictionary
+    print(accounts)
+    print('customer is added...')
 
+    with open('banker.txt','w') as file:
+        file.write(str(accounts))
 #========View_customer============
 
 def View_Customer():
-    print(dic1)
-
+    with open('banker.txt','r') as file:
+        print(file.readline())
+      
+        
 #======Search Customer============
 
-def search_customer():
-    ac_no = input("\nEnter Acount number : ")
-    print('Customer details is : ',dic1[ac_no])
+def search_acc():
+    with open('banker.txt','r') as file:
+        data = file.readline()
+
+        content = eval(data)
     
-'''
-display()
-add_customer()
-View_Customer()
-search_customer()
-'''
+        # Get user input for the search key
+        search_key = input("\nEnter the key to search for: ")
+
+        # Initialize an empty dictionary for the desired dictionary
+        desired_dict = {}
+
+        # Search for the dictionary with the user-provided key
+        for item in content.items():
+            if search_key in item:
+                desired_dict = item
+                break
+
+        if desired_dict:
+            print('\n',desired_dict)
+        else:
+            print(f"Dictionary with key '{search_key}' not found.")
+
+
+#======view all Customer============
+
+def View_All_Customer():
+    with open('banker.txt','r') as file:
+        lines = file.readlines()
+        for item in lines:
+            print(item)
+        
+def Total_Amounts():
+    with open('banker.txt','r') as file:
+        data = file.readline()
+
+        content = eval(data)
+
+
+    total_balance = 0
+
+    total_balance = sum(customer['balance'] for customer in content.values())
+
+    print(f"The total balance across all customers is: {total_balance}")
+

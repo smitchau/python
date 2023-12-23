@@ -11,31 +11,78 @@ def Customer_menu():
 
 #==========Withdraw_Amount================
 def Withdraw_Amount():
-    ac_no  = input('Enter ac no : ')
-    name = input('Enter name : ')
-    Amount = int(input('Enter Amount : '))
+    acc_number = input("\n Enter Account number : ")
 
-    var = b1.dic1[ac_no]['balance'] - Amount
+    try:
+        with open('banker.txt','r') as file:
+            content = file.read()
+            if content:
+                data = eval(content)
+                current_name = data.get(acc_number,{}).get("name",0)
+                current_balance = data.get(acc_number,{}).get("balance",0)
+                
+    except FileNotFoundError:
+        current_name= 0
+        current_balance=0
+        
+    withdraw_amount = int(input("Enter withdraw amount : "))
 
-    b1.dic1[ac_no] = {'name':name,'balance':var}
+    new_name = current_name
+    
+    new_balance = current_balance - withdraw_amount
 
-    print(b1.dic1)
+    data[acc_number] = {'name':new_name , 'balance':new_balance}
+
+    with open('banker.txt','w') as file:
+        file.write(str(data))
 
 #================Deposite_Amount=================
 def Deposite_Amount():
-    ac_no  = input('Enter ac no : ')
-    name = input('Enter name : ')
-    Amount = int(input('Enter Amount : '))
+    acc_number = input("\n Enter Account number : ")
 
-    var = b1.dic1[ac_no]['balance'] + Amount
+    try:
+        with open('banker.txt','r') as file:
+            content = file.read()
+            if content:
+                data = eval(content)
+                current_name = data.get(acc_number,{}).get("name",0)
+                current_balance = data.get(acc_number,{}).get("balance",0)
+                
+    except FileNotFoundError:
+        current_name= 0
+        current_balance=0
+        
+    deposite_amount = int(input("Enter deposite amount : "))
 
-    b1.dic1[ac_no] = {'name':name,'balance':var}
-
-    print(b1.dic1)
+    new_name = current_name
     
+    new_balance = current_balance + deposite_amount
+
+    data[acc_number] = {'name':new_name , 'balance':new_balance}
+
+    with open('banker.txt','w') as file:
+        file.write(str(data))
+  
 #=========view_balance=============
 def view_balance():
-    ac_no  = input('Enter ac no : ')
+    with open('banker.txt','r') as file:
+        data = file.readline()
 
-    print('Your Balance is : ',b1.dic1[ac_no]['balance'])
+        content = eval(data)
+    
+        # Get user input for the search key
+        search_key = input("\nEnter the key to search for: ")
 
+        # Initialize an empty dictionary for the desired dictionary
+        desired_dict = {}
+
+        # Search for the dictionary with the user-provided key
+        for item in content.items():
+            if search_key in item:
+                desired_dict = item
+                break
+
+        if desired_dict:
+            print('\n',desired_dict)
+        else:
+            print(f"Dictionary with key '{search_key}' not found.")

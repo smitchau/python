@@ -49,11 +49,38 @@ def role_menu():
                 elif(more_oper == 'n'):
                     bool = False
 
-            #======View customer operation perform==========
+            #======search customer operation perform==========
 
             elif operation == 3:
+
                 
-                b1.search_customer()
+                b1.search_acc()
+
+                more_oper = input('\nDo you want to perform more operations press "y" for yes and press "n" for no :')
+
+                if (more_oper == 'y'):
+                    bool = True
+                        
+                elif(more_oper == 'n'):
+                    bool = False
+
+             #======view all customer operation perform==========
+
+            elif operation == 4:
+                
+                b1.View_All_Customer()
+
+                more_oper = input('\nDo you want to perform more operations press "y" for yes and press "n" for no :')
+
+                if (more_oper == 'y'):
+                    bool = True
+                        
+                elif(more_oper == 'n'):
+                    bool = False
+                    
+            elif operation == 5:
+                
+                b1.Total_Amounts()
 
                 more_oper = input('\nDo you want to perform more operations press "y" for yes and press "n" for no :')
 
