@@ -1,5 +1,9 @@
 #===============================Banker Module===============================
 
+#import module
+import datetime
+now = datetime.datetime.now()
+
 #========Display============
 
 def display():
@@ -14,23 +18,24 @@ def display():
     print("\t\t4) View All Customer")
     print("\t\t5) Total Amounts in Bank\n")
 
-#========Add_customer============
+# Initialize an empty dictionary to store accounts
+
 accounts = {}
+
+#========Add_customer============
+
 def add_customer():
-
-    # Initialize an empty dictionary to store accounts
-    
-
     # Getting user input for account details
     num_accounts = int(input("Enter the number of accounts: "))
 
     for _ in range(num_accounts):
         acc_number = input("Enter account number: ")
         name = input("Enter name: ")
-        balance = float(input("Enter balance: "))  # Assuming balance is a floating-point number
+        balance = float(input("Enter balance: "))
+        times = str(now)
     
         # Creating a dictionary for the account
-        account_info = {'name': name, 'balance': balance}
+        account_info = {'name': name, 'balance': balance ,'Opening-Date': times}
         
         # Adding the account to the accounts dictionary
         accounts[acc_number] = account_info
@@ -81,7 +86,9 @@ def View_All_Customer():
         lines = file.readlines()
         for item in lines:
             print(item)
-        
+
+#======Total Customer============
+     
 def Total_Amounts():
     with open('banker.txt','r') as file:
         data = file.readline()

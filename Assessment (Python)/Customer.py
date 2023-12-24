@@ -13,27 +13,30 @@ def Customer_menu():
 def Withdraw_Amount():
     acc_number = input("\n Enter Account number : ")
 
+    #try and Except block
     try:
-        with open('banker.txt','r') as file:
-            content = file.read()
+        with open('banker.txt','r') as file:     #read banker.txt file
+            content = file.read()                   #assign file to content var.
             if content:
                 data = eval(content)
-                current_name = data.get(acc_number,{}).get("name",0)
+                #get current name and balance
+                current_name = data.get(acc_number,{}).get("name",0)                
                 current_balance = data.get(acc_number,{}).get("balance",0)
                 
     except FileNotFoundError:
+        # current name and balance not fount assing 0
         current_name= 0
         current_balance=0
-        
-    withdraw_amount = int(input("Enter withdraw amount : "))
-
-    new_name = current_name
     
-    new_balance = current_balance - withdraw_amount
+    withdraw_amount = int(input("Enter withdraw amount : ")) #user input widhraw amount
 
-    data[acc_number] = {'name':new_name , 'balance':new_balance}
+    new_name = current_name                     
+    
+    new_balance = current_balance - withdraw_amount        #update balance
 
-    with open('banker.txt','w') as file:
+    data[acc_number] = {'name':new_name , 'balance':new_balance}     
+
+    with open('banker.txt','w') as file:     #write data into txtfile
         file.write(str(data))
 
 #================Deposite_Amount=================

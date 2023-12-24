@@ -1,5 +1,6 @@
 import Banker as b1        #import banker modul b1
 import Customer as c1      #import customer modul c1
+
 #===create role sunction====
 def role_menu():
     
@@ -77,6 +78,9 @@ def role_menu():
                         
                 elif(more_oper == 'n'):
                     bool = False
+
+             #======Total balance operation perform==========
+
                     
             elif operation == 5:
                 
@@ -90,7 +94,7 @@ def role_menu():
                 elif(more_oper == 'n'):
                     bool = False
 
-#================choice (2) for customer===============================================
+#===========================choice (2) for customer===============================================
 
     elif(choice == 2):
         
