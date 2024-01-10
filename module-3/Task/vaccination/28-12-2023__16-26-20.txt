@@ -1,0 +1,8 @@
+
+		Vaccination Report
+==============================================
+Name is :- smit
+Age is :- 21
+Age is :- 2345678
+vacine Name is:- ws
+vacine Doze is:- 12

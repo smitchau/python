@@ -33,7 +33,7 @@ def Withdraw_Amount():
     new_name = current_name                     
     
     new_balance = current_balance - withdraw_amount        #update balance
-
+    
     data[acc_number] = {'name':new_name , 'balance':new_balance}     
 
     with open('banker.txt','w') as file:     #write data into txtfile
