@@ -1,7 +1,11 @@
-file = open('example 1.1.txt','a')
+file = open('studentinfo.txt','r')
+f1 = []
+for i in file:
+    f1 = i
 
-for i in range(1,6):
-    name = input("Enter your name : ")
-    file.write("\n"+name)
+print(f1)
+'''
+f1 = file.readlines(-1)
 
-file.close()
+print(f1)
+'''
